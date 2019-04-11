@@ -1,0 +1,5 @@
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite  # .sqlite to be committed per project requirements
