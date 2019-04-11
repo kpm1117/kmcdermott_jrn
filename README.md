@@ -1,6 +1,6 @@
 ## Summary
 
-My solutions to Jornaya's [Software Engineer Code Test](https://leadid-dev.gitlab.io/scratch/software-engineering-code-test/).
+My solutions to the [Software Engineer Code Test](https://leadid-dev.gitlab.io/scratch/software-engineering-code-test/).
 
 
 # 1. Recency Calculation
@@ -34,7 +34,7 @@ Client ID: 1234
 Client ID: 9012
 ```
 
-### Editorial Notes
+## Editorial Notes
 
 1. In the example problem for Recency Calculation, the bullets should say:
 
@@ -42,4 +42,4 @@ Client ID: 9012
 > - Are ~~at least~~ no more than 5 seconds old?
 > - Are ~~at least~~ no more than 8 seconds old?
 
-2. In A Customer Question, the source table doesn't match the DML (dates differ for client 9012).
+2. In A Customer Question, the source table doesn't match the DML (dates differ for client 9012). My solution favors the DML.

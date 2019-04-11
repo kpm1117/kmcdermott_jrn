@@ -22,8 +22,8 @@ tl;dr
     )
 
 Notes:
-    * There was a mismatch in column names between some rows of the DML and DDL,
-      I picked one and built the code around it..
+    * The test contained a mismatch in the data between the DML and sample
+      table. I favor the DML here.
     * Lots of print statements below - to make it easy to run via console and
       see what's going on.
     * Much of the code below deals with reading data from a csv file into a
@@ -32,12 +32,10 @@ Notes:
       etc. I took a bunch of shortcuts - each ingest/query/aggregation process in
       a large scale production system is tuned separately.
 """
-
 from calendar import monthrange
 from csv import DictReader
 import datetime
 import logging
-import os
 import sqlite3
 
 
@@ -68,6 +66,9 @@ class ClientQuery:
         self.cursor = self.conn.cursor()
 
     def _ready_source_table(self):
+        """
+        Create an sqlite table `lead_daily_sum` if not found.
+        """
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS lead_daily_sum (
                 client_id integer NOT NULL,
@@ -80,6 +81,9 @@ class ClientQuery:
         self.conn.commit()
 
     def _ready_source_data(self):
+        """
+        Populate the table `lead_daily_sum` using a CSV source.
+        """
         print(f"Reading source data from {SAMPLE_DATA_CSV}")
         with open(SAMPLE_DATA_CSV, "r") as f:
             sql_insert_values = [
@@ -90,7 +94,6 @@ class ClientQuery:
                 )
                 for row in DictReader(f, quotechar="'")
             ]
-
 
         self.cursor.executemany('''
             INSERT INTO lead_daily_sum (

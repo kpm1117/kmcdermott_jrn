@@ -2,4 +2,5 @@
 ######################
 *.log
 *.sql
-*.sqlite  # .sqlite to be committed per project requirements
+*.sqlite
+*.db
