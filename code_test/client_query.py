@@ -14,7 +14,7 @@ tl;dr
         )
         GROUP BY client_id
     )
-    SELECT client_id [leads_agg]
+    SELECT client_id
     FROM aggregate_totals
     WHERE leads_agg = (
         SELECT MAX(leads_agg)
@@ -138,7 +138,7 @@ class ClientQuery:
                 )
                 GROUP BY client_id
             )
-            SELECT client_id [leads_agg]
+            SELECT client_id
             FROM aggregate_totals
             WHERE leads_agg = (
                 SELECT MAX(leads_agg)
@@ -146,7 +146,7 @@ class ClientQuery:
             )
         ''', (start_date, end_date))
 
-        print(f"Customers who generated the most leads in {month}/{year}.")
+        print(f"\nCustomers who generated the most leads in {month}/{year}:\n")
         result = list(self.cursor)
         for row in result:
             print(f"Client ID: {row[0]}")
