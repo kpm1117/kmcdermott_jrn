@@ -157,7 +157,7 @@ class ClientQuery:
 
 if __name__ == "__main__":
 
-    SQLITE_FILE = "./sqlite.db"
+    SQLITE_FILE = "./db.sqlite3"
     SAMPLE_DATA_CSV = "./data/lead_daily_sum_sample_data.csv"
     SAMPLE_DATA_DATE_FORMAT = "%d-%b-%Y"
 
